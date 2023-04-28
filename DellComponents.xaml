@@ -1,0 +1,41 @@
+﻿<Window x:Class="Ychet.DellComponents"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ychet"
+        mc:Ignorable="d"
+        Title="DellComponents" Height="150"  WindowStartupLocation="CenterScreen" Width="390" FontSize="16" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="117"/>
+            <ColumnDefinition Width="203*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Grid.RowSpan="1" Grid.Row="0"  Margin="5,5,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                <TextBlock Text="Компонент" Margin="0,1,0,12"/>
+                <TextBlock Text="Название" Margin="0,0,0,12"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="2" Grid.RowSpan="1" Grid.Row="0" Margin="0,5,5,0">
+            <StackPanel Orientation="Vertical">
+                <ComboBox x:Name="CmbComponents" Margin="0,0,0,10" VerticalAlignment="Bottom" DropDownClosed="CmbComponents_DropDownClosed">
+                    <TextBlock Text="Тип провода"/>
+                    <TextBlock Text="Корпус"/>
+                    <TextBlock Text="Шкаф"/>
+                </ComboBox>
+                <ComboBox x:Name="CmbNameComponents" Margin="0,0,0,0" IsEnabled="False" />
+            </StackPanel>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button x:Name="BntBack" Content="Назад" Margin="0,0,5,0" Click="BntBack_Click"/>
+            <Button x:Name="BtnDellComponent" Content="Удалить" Click="BtnAddComponent_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

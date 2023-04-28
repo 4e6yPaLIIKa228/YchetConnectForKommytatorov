@@ -1,0 +1,113 @@
+﻿<Window x:Class="Ychet.AddConnect"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ychet"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="410"  WindowStartupLocation="CenterScreen" Width="390" FontSize="16" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="212"/>
+            <RowDefinition Height="69*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="167"/>
+            <ColumnDefinition Width="203*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Margin="1,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="111*"/>
+                <RowDefinition Height="163*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1" >
+                <TextBlock Text="НАЧАЛО" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="-90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Grid>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Border Background="Black" Width="1" Height="Auto" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Top" >
+                <Border Background="Black" Width="170" Height="1" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" >
+                <Border Background="Black" Width="170" Height="1" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="1,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="66"/>
+                <RowDefinition Height="207"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" >
+                <TextBlock Text="КОНЕЦ" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="-90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Grid>
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Border Background="Black" Width="1" Height="Auto" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" >
+                
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom" >
+                <Border Background="Black" Width="170" Height="1" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2" Margin="5,5,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                <TextBlock Text="Номер кабеля" Margin="0,1,0,12"/>
+                <TextBlock Margin="0,0,0,12"><Run Text="Номер патч-"/><Run Text="панели"/><Run Language="ru-ru" /></TextBlock>
+                <TextBlock Text="Номер порта" Margin="0,0,0,12"/>
+                <TextBlock Text="Номер помещения" Margin="0,0,0,12"/>
+                <TextBlock Text="Номер места" Margin="0,0,0,14"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Тип провода" Margin="0,0,0,16"/>                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Корпус" Margin="0,0,0,16"/>
+                    <StackPanel Orientation="Horizontal">                    
+                    </StackPanel>
+                </StackPanel>                
+                <TextBlock Text="Этаж" Margin="0,0,0,16"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Номер Шкафа" Margin="0,0,0,0"/>                    
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="2" Grid.RowSpan="2" Margin="0,5,5,0">
+            <StackPanel Orientation="Vertical">
+                <TextBox x:Name="NumberKabela"  Margin="0,0,0,10"  PreviewKeyDown="TextValidationTextBox"/>
+                <TextBox x:Name="NumberPatch" Margin="0,0,0,10" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="TextValidationTextBox"/>
+                <TextBox x:Name="NumberPort" Margin="0,0,0,10"  PreviewKeyDown="TextValidationTextBox"/>
+                <TextBox x:Name="NumberExit" Margin="0,0,0,10"/>
+                <TextBox x:Name="NumberPozetku" Margin="0,0,0,10"/>
+                <ComboBox x:Name="CmbTypeProvod" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
+                <ComboBox x:Name="CmbCorpus" Margin="0,0,0,10" DropDownClosed="CmbCorpus_DropDownClosed"/>
+                <ComboBox x:Name="CmbLVLCorpus" Margin="0,0,0,10" IsEnabled="False" DropDownClosed="CmbLVLCorpus_DropDownClosed"/>
+                <ComboBox x:Name="CmbBox" Margin="0,0,0,0" IsEnabled="False" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="3" Margin="0,26,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Content="Назад" Name="BtnBack" Click="BtnBack_Click" />
+                <Button Content="Добавить" Name="BtnAdd" Margin="10,0,0,0" Click="BtnAdd_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

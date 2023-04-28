@@ -1,0 +1,39 @@
+﻿<Window x:Class="Ychet.AddNewConnectionBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ychet"
+        mc:Ignorable="d"
+        Title="AddNewConnectionBox" Height="200"  WindowStartupLocation="CenterScreen" Width="300" FontSize="16" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="124"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="167"/>
+            <ColumnDefinition Width="203*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="5,8,0,12" Text="Номер шкафа"/>
+                <TextBlock Margin="5,8,0,12"><Run Text="Номер патч-"/><Run Text="панели"/><Run Language="ru-ru" /></TextBlock>
+                <TextBlock Margin="5,2,0,12" Text="Колличество портов"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <StackPanel Orientation="Vertical">
+                <ComboBox Margin="5,5,5,12" x:Name="CmbNumberBox"/>
+                <TextBox Margin="5,5,5,12" Name="TxBxNamePatchPanel" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="TextValidationTextBox"/>
+                <TextBox Margin="5,0,5,12" x:Name="TxBxKollPortov" PreviewTextInput="NumberValidationTextBox" PreviewKeyDown="TextValidationTextBox"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="BtnBack" Margin="0,0,5,0" Content="Назад" Click="BtnBack_Click"/>
+                <Button x:Name="BtnAdd" Content="Добавить" Click="BtnAdd_Click" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

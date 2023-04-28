@@ -1,0 +1,133 @@
+﻿<Window x:Class="Ychet.DataBaseConnection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ychet"
+        mc:Ignorable="d"
+        Title="DataBaseConnection" WindowStartupLocation="CenterScreen" Height="450" Width="1020" FontFamily="Times New Roman" FontSize="16">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="216*"/>
+            <RowDefinition Height="145*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="254"/>
+            <ColumnDefinition Width="210"/>
+            <ColumnDefinition Width="337*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="84"/>
+                <ColumnDefinition Width="170"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                <Border Background="Black" Width="1" Height="Auto" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" >
+                <Border Background="Black" Width="170" Height="1" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Border Background="Black" Width="1" Height="Auto" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <TextBlock Text="НАЧАЛО" Width="Auto"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="210"/>
+            </Grid.ColumnDefinitions>
+
+            
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top"  >
+                <Border Background="Black" Width="210" Height="1" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Border Background="Black" Width="1" Height="Auto" BorderBrush="Black">
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="КОНЕЦ" Width="Auto"/>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2" Margin="5,0,0,0" >
+            <!--<ScrollViewer x:Name="ScrlVrBD" PreviewMouseWheel="ScrlVrBD_PreviewMouseWheel" >-->
+                <DataGrid x:Name="DataGridDB" IsReadOnly="True"  HorizontalScrollBarVisibility="Hidden" FrozenColumnCount="5" SelectionMode="Single" ColumnWidth="*" ScrollViewer.CanContentScroll="True" AutoGenerateColumns="False" RowHeaderWidth="0" CanUserAddRows="False" FontFamily="Times New Roman" FontSize="16" MouseDoubleClick="DataGridDB_MouseDoubleClick" LoadingRow="DataGridDB_LoadingRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="№ Кабеля"  Width="auto" Binding="{Binding NumberKabela}"/>
+                        <DataGridTextColumn Header="Патч-панель"  Width="110" Binding="{Binding NumberPatch}"/>
+                        <DataGridTextColumn Header="Порт"  Width="60" Binding="{Binding NumberPort}"/>
+                        <DataGridTextColumn Header="Помещение"  Width="100" Binding="{Binding NumberExit}"/>
+                        <DataGridTextColumn Header="Место(номер)"  Width="110"  Binding="{Binding NumberMesta}"/>
+                        <DataGridTextColumn Header="Тип провода" Width="auto"   Binding="{Binding NameType}"/>
+                        <DataGridTextColumn Header="Номер шкафа"  Binding="{Binding NumberBox}"/>
+                        <DataGridTextColumn Header="Корпус"  Binding="{Binding Corpus}"/>
+                        <DataGridTextColumn Header="Этаж"  Binding="{Binding LVLCorpus}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            <!--</ScrollViewer>-->
+        </Grid>
+        <Grid Grid.ColumnSpan="3">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,5,10,0" >
+                    <TextBlock Text="Поиск"  VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Horizontal"  >
+                        <ComboBox x:Name="CmbSearch" Width="120" Margin="5,0,10,0" DropDownClosed="CmbSearch_DropDownClosed">
+                            <TextBlock Text="Номер шкафа"/>
+                            <TextBlock Text="Корпус"/>
+                            <TextBlock Text="Этаж"/>
+                        </ComboBox>
+                        <TextBox  Width="100" x:Name="TBSearch" TextChanged="TBSearch_TextChanged" />
+                        <TextBlock  x:Name="TbDopSearch" Visibility="Collapsed" Text="Доп. поиск"   VerticalAlignment="Center" Margin="10,0,0,0 "/>
+                        <ComboBox x:Name="CmbSearchDop" Visibility="Collapsed" Width="auto" Margin="5,0,0,0" DropDownClosed="CmbSearchDop_DropDownClosed">
+                            <TextBlock  x:Name="TbPort" Text="Начало"/>
+                            <TextBlock  x:Name="TbConnect" Text="Конец"/>
+                            <TextBlock  x:Name="Tbkabel" Text="№ Кабеля"/>
+                            <!--<TextBlock  x:Name="TbLVL" Visibility="Collapsed" IsEnabled="True" Text="№ Этаж"/>-->
+                        </ComboBox>
+                        <TextBlock Text="Патч" x:Name="TBDop1" Visibility="Collapsed" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                        <TextBox  Width="50" x:Name="TBSearchDop1" Visibility="Collapsed" TextChanged="TBSearch_TextChanged" Margin="5,0,5,0"/>
+                        <TextBlock Text="Порт" x:Name="TBDop2" Visibility="Collapsed" VerticalAlignment="Center" Margin="10,0,5,0"/>
+                        <TextBox  Width="50" x:Name="TBSearchDop2" Visibility="Collapsed" TextChanged="TBSearch_TextChanged"/>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <StackPanel Orientation="Vertical"> 
+                        <Button x:Name="BtnAddConnect" Content="Добавить подключение" Visibility="Collapsed" Click="BtnAddConnect_Click" />
+                        <Button x:Name="BtnDell" Content="Удалить подключение" Margin="0,0,0,0" Click="BtnDell_Click" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Button x:Name="BtnEddconnect" Content="Изменить подключение" Margin="5,0,0,5" Click="BtnEddconnect_Click" />
+                        <Button x:Name="BtnAddMoreConn" Content="Добавить пустые подключения"  Margin="5,0,0,0" Click="BtnAddMoreConn_Click" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">                   
+                        <Button x:Name="BtnAddComponent" Content="Добавить компонет" Margin="5,0,0,0" Click="BtnAddComponent_Click"  />
+                        <Button x:Name="BtnDellComponent" Content="Удалить компонет" Margin="5,5,0,0" Click="BtnDellComponent_Click"  />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">                       
+                        <Button x:Name="BtnExcportExcel" Content="Экспорт в Excel" Click="BtnExcportExcel_Click" Margin="5,0,0,0" />
+                        <Button x:Name="BtnEddComponent" Content="Изменить компонет" Margin="5,5,0,0" Click="BtnEddComponent_Click"   />
+                    </StackPanel>
+                  
+                    <Button x:Name="BtnPrint" Content="Печать" Click="BtnExcportExcel_Click" Margin="10,0,0,0" Visibility="Collapsed" />
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Window>
